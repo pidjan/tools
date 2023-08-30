@@ -1,3 +1,3 @@
 # Usage
 
-Download script that you want and run in windows.
+Download script that you want in Releases and run.
