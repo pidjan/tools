@@ -1,3 +1,3 @@
 # Usage
 
-Download script that you want in Releases and run.
+Download scripts that you want in WinTweaks release.
