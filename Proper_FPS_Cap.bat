@@ -55,7 +55,7 @@ set /a divider = %divider% + 1
 goto :loop2
 
 :finish 
-sort viableFpsCaps.temp_var /O viableFpsCaps.temp_var2
+sort /UNIQUE viableFpsCaps.temp_var /O viableFpsCaps.temp_var2
 del /f /s /q viableFpsCaps.temp_var >nul 2>&1 
 for /f %%i in (viableFpsCaps.temp_var2) do (
   set FpsCaps=!FpsCaps! %%i
