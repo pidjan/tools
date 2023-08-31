@@ -13,7 +13,8 @@ if defined nan1 ( goto :incorrect )
 if defined nan2 ( goto :incorrect )
 if !hz! leq 1 ( goto :incorrect )
 if !max! leq 1 ( goto :incorrect )
-
+if !hz! geq 100000 ( goto :incorrect )
+if !max! geq 100000 ( goto :incorrect )
 del /f /s /q viableFpsCaps.temp_var >nul 2>&1
 
 set multiplier=1
@@ -32,7 +33,6 @@ if !cap! geq 1 (
 set /a multiplier=%multiplier% + 1
 
 goto :loop1
-set executed=0
 :loop2
 set /a modulus=%hz% %% %divider%
 if %modulus% equ 0 (
@@ -79,16 +79,16 @@ for /l %%i in (1,1,%i%) do (
     set "sortedFpsCaps=!sortedFpsCaps! !num[%%i]!"
 )
 set "sortedFpsCaps=%sortedFpsCaps:~1%"
-set "sortedFpsCaps=%sortedFpsCaps: =, %"
+set "sortedFpsCaps=%sortedFpsCaps: = ^| %"
 echo.
 echo Viable FPS Caps:
-echo %sortedFpsCaps%
+echo [ 1 ^| %sortedFpsCaps% ]
 echo.
 pause
 exit
 
 
 :incorrect
-echo. Incorrect refresh rate and/or max fps limit passed.
+echo Incorrect refresh rate and/or max fps limit passed.
 timeout /t 3 >nul 2>&1
 exit
